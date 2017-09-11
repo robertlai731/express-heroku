@@ -1,4 +1,5 @@
 const express = require('express')
+const request = require('request')
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -8,6 +9,14 @@ app.get('/', function (req, res) {
 
 app.get('/hi', function (req, res) {
   res.send('Hi World!')
+  let address = 'National Taiwan University'
+  let url = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}`
+  request(url, 
+      function (error, response, body) {
+    console.log('error:', error);
+    console.log('statusCode:', response.statusCode);
+    console.log('body:', body);
+  });
 })
 
 app.listen(port, function () {
