@@ -3,6 +3,13 @@ const request = require('request')
 const app = express()
 const port = process.env.PORT || 3000
 
+let   myobject={name:"賴育彥",email:"diamondlai88@yahoo.com.tw"}
+app.get('/homework', function (req, res) {
+  res.send(JSON.stringify(myobject))
+})
+
+
+
 app.get('/', function (req, res) {
   res.send('Hello World!')
 })
